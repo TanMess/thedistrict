@@ -18,12 +18,12 @@ class ContactController extends AbstractController
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-            
+        if ($form->isSubmitted() && $form->isValid()) {
+
             $message = new Contact();
             $data = $form->getData();
             $message = $data;
-            $entityManager->persist ($message);
+            $entityManager->persist($message);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_accueil');
@@ -34,5 +34,3 @@ class ContactController extends AbstractController
         ]);
     }
 }
-
-
