@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/accueil', name: 'app_accueil')]
+    #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ContactFormType::class);
@@ -26,7 +26,7 @@ class ContactController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_contact');
         }
         return $this->render('contact/index.html.twig', [
             //'form' => $form->createView(),
