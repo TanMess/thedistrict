@@ -29,6 +29,9 @@ class ContactFormType extends AbstractType
             )
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer le message'
+            ]);
+            ->add('message', templatedEmail::class [ 
+                'label' => 'Votre message'
             ])
         ;
     }
