@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Contact;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,10 +30,8 @@ class ContactFormType extends AbstractType
             )
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer le message'
-            ]);
-            ->add('message', templatedEmail::class [ 
-                'label' => 'Votre message'
             ])
+            
         ;
     }
 

@@ -1,29 +1,25 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MailerController extends AbstractController
 {
-    #[Route('/mailer', name: 'app_mailer')]
+    #[Route('/emails', name: 'app_emails')]
     public function sendEmail(MailerInterface $mailer): Response
     {
-        $email = (new TemplatedEmail())
+        $email = (new Email())
             ->from('hello@example.com')
-            ->to(new Address('ryan@example.com'))
+            ->to('you@example.com')
             ->subject('Time for Symfony Mailer!')
-            ->htmlTemplate('emails/signup.html.twig')
-            ->context([
-                'expiration_date' => new \DateTime('+7 days'),
-                'username' => 'foo',
-            ]);
+            ->text('Sending emails is fun again!')
+            ->html('<p>See Twig integration for better HTML integration!</p>');
 
         $mailer->send($email);
+
     }
 }
